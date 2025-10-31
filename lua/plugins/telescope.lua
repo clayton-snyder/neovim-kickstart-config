@@ -130,13 +130,28 @@ return {
 
     -- CMS: Siglo searches. Required to split these up; the size can crash live grep.
     -- local siglo_base =  'C:\\home\\Siglo\\sdk\\'
-    local cwd = vim.fn.getcwd() .. '\\'
-    local programs_base = cwd .. 'Programs\\'
-    local ssl_dirs = {
-      programs_base .. 'Eris\\Sources\\Libraries\\ssl',
-      programs_base .. 'Eris\\Sources\\Processes\\ssl',
-      programs_base .. 'Eris\\Include\\nn\\ssl',
-    }
+    -- TODO: CMS: REFACTOR ALL OF THIS LMAO
+    local is_windows = (vim.fn.has('win64') == 1 or vim.fn.has('win32') == 1)
+    local cwd = '??'
+    local programs_base = '??'
+    local ssl_dirs = {}
+    if (is_windows) then
+      local cwd = vim.fn.getcwd() .. '\\'
+      local programs_base = cwd .. 'Programs\\'
+      ssl_dirs = {
+        programs_base .. 'Eris\\Sources\\Libraries\\ssl',
+        programs_base .. 'Eris\\Sources\\Processes\\ssl',
+        programs_base .. 'Eris\\Include\\nn\\ssl',
+      }
+    else
+      local cwd = vim.fn.getcwd() .. '/'
+      local programs_base = cwd .. 'Programs/'
+      ssl_dirs = {
+        programs_base .. 'Eris/Sources/Libraries/ssl',
+        programs_base .. 'Eris/Sources/Processes/ssl',
+        programs_base .. 'Eris/Include/nn/ssl',
+      }
+    end
 
 
     vim.keymap.set('n', '<leader>lgssl', function()

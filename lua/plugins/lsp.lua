@@ -1,3 +1,5 @@
+local util = require('core.util')
+
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
@@ -123,8 +125,8 @@ return {
     local servers = {
       clangd = {
         cmd = {
-          cwd .. '\\ToolChains\\clang-for-nn.1.19.5\\bin\\clangd.exe',
-          '--load=' .. cwd .. '\\.vscode\\clang-for-nn-libraries.1.19.5-clangd-siglo-plugin.dll',
+          util.fix_filepath(cwd .. '/ToolChains/clang-for-nn.1.19.5/bin/clangd.exe'),
+          '--load=' .. util.fix_filepath(cwd .. '/.vscode/clang-for-nn-libraries.1.19.5-clangd-siglo-plugin.dll'),
         }
       },
       lua_ls = {
