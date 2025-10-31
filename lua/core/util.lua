@@ -6,11 +6,13 @@ end
 
 -- Changes path separators to backslashes if on Windows and forward slashes if not.
 function util.fix_filepath(path_str)
+  local fixed = '??'
   if util.is_windows() then
-    return string.gsub(path_str, '/', '\\')
+    fixed, _ = string.gsub(path_str, '/', '\\')
   end
   
-  return string.gsub(path_str, '\\', '/')
+  fixed, _ = string.gsub(path_str, '\\', '/')
+  return fixed
 end
 
 return util

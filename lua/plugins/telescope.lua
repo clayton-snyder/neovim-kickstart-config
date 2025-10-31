@@ -1,3 +1,5 @@
+local util = require('core.util')
+
 return {
   'nvim-telescope/telescope.nvim',
   event = 'VimEnter',
@@ -129,31 +131,12 @@ return {
     end, { desc = '[L]ive [G]rep in [O]pen [F]iles' })
 
     -- CMS: Siglo searches. Required to split these up; the size can crash live grep.
-    -- local siglo_base =  'C:\\home\\Siglo\\sdk\\'
-    -- TODO: CMS: REFACTOR ALL OF THIS LMAO
-    local is_windows = (vim.fn.has('win64') == 1 or vim.fn.has('win32') == 1)
-    local cwd = '??'
-    local programs_base = '??'
-    local ssl_dirs = {}
-    if (is_windows) then
-      local cwd = vim.fn.getcwd() .. '\\'
-      local programs_base = cwd .. 'Programs\\'
-      ssl_dirs = {
-        programs_base .. 'Eris\\Sources\\Libraries\\ssl',
-        programs_base .. 'Eris\\Sources\\Processes\\ssl',
-        programs_base .. 'Eris\\Include\\nn\\ssl',
-      }
-    else
-      local cwd = vim.fn.getcwd() .. '/'
-      local programs_base = cwd .. 'Programs/'
-      ssl_dirs = {
-        programs_base .. 'Eris/Sources/Libraries/ssl',
-        programs_base .. 'Eris/Sources/Processes/ssl',
-        programs_base .. 'Eris/Include/nn/ssl',
-      }
-    end
-
-
+    local programs_base = vim.fn.getcwd() .. '/Programs/'
+    local ssl_dirs = {
+      util.fix_filepath(programs_base .. 'Eris/Sources/Libraries/ssl'),
+      util.fix_filepath(programs_base .. 'Eris/Sources/Processes/ssl'),
+      util.fix_filepath(programs_base .. 'Eris/Include/nn/ssl'),
+    }
     vim.keymap.set('n', '<leader>lgssl', function()
       builtin.live_grep {
         search_dirs = ssl_dirs,
