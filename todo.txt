@@ -1,0 +1,46 @@
+~* gray out disabled macro blocks
+* TELESCOPe MENU:
+    * Rezisable!
+    * transparent turn on and off! Or hide, so you can see underneath. Gotta be able to read behind...
+    * Border and such
+    * Quit sanely
+    * Maybe a menu of search types, instead of all the crazy leaders? Or just standardize
+* commands for regenerating compile_commands.json and restarting clangd
+* how the heck do I use autocomplete
+* get stupid install stuff working
+* fzf for dirs?
+* show full filepath! somewhere!
+* Telescope picker for various Siglo dirs. Programs, ssl, etc.
+* new color scheme. telescope picker for colorschemes, switch
+* add back symbols for whitespace
+* flash.nvim!
+* snippets for:
+    - module/desc fmt string
+    - module/desc calls on result
+* colorful-menu.nvim!
+* STANDARDIZE ON ESC TO EXIT THINGS. YAZI ETC.
+* Make a list of commands to start using more
+* Env vars for common rel paths from Programs to ssl 
+* rice flash
+* rice harpoon. can I have diff harpoon lists? maybe one for todo? add from search/livegrep windows?
+    * default list of waypoints in Siglo sdk
+* NEED FIND FILES IN SSL. NOT FIND FILES WITH. in general get searching locked down
+* how to operate in search menus? Need to be able to add to lists, etc.
+* improve the bufferlines
+
+experiment:
+* maybe a vertical bufferline? maybe not. but having it horizontal makes it confusing to track
+  which split it's open in. think "buffer all the way on the right" and split on the left. Maybe 
+  order the buffer "tabs" like a stack? currently open always on the far left, recents after?
+
+terminal:
+* env vars: siglo base, ssl base, nss/openssl, tests, samples, process list dirs
+* aliases: common nact builds (snippets DWM style?), flashes
+* misc snips: serial numbers
+
+
+linux:
+* move siglo-wsl.sh somewhere else so it doesn't get committed
+* need to figure out the path for nact and other tools. Oh yeah we're missing tools from the path LMAO
+* What's the "why"?
+* when in siglo, alias git to git.exe

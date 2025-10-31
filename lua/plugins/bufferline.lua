@@ -9,7 +9,7 @@ return {
       options = {
         mode = 'buffers', -- set to "tabs" to only show tabpages instead
         themable = true, -- allows highlight groups to be overriden i.e. sets highlights as default
-        numbers = 'none', -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
+        numbers = 'both', -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
         close_command = 'Bdelete! %d', -- can be a string | function, see "Mouse actions"
         buffer_close_icon = '✗',
         close_icon = '✗',
@@ -18,8 +18,8 @@ return {
         left_trunc_marker = '',
         right_trunc_marker = '',
         max_name_length = 30,
-        max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
-        tab_size = 21,
+        max_prefix_length = 5, -- prefix used when a buffer is de-duplicated
+        tab_size = 25,
         diagnostics = false,
         diagnostics_update_in_insert = false,
         color_icons = true,
@@ -27,7 +27,8 @@ return {
         show_buffer_close_icons = true,
         show_close_icon = true,
         persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
-        separator_style = { '│', '│' }, -- | "thick" | "thin" | { 'any', 'any' },
+        -- separator_style = 'thin', -- | "thick" | "thin" | { 'any', 'any' },
+        separator_style = {'|', '|'},
         enforce_regular_tabs = true,
         always_show_bufferline = true,
         show_tab_indicators = false,
@@ -38,17 +39,49 @@ return {
         icon_pinned = '󰐃',
         minimum_padding = 1,
         maximum_padding = 5,
-        maximum_length = 15,
+        maximum_length = 23,
         sort_by = 'insert_at_end',
       },
       highlights = {
+        -- fill = {
+        --   bg = '#000055',
+        -- },
         separator = {
-          fg = '#434C5E',
+          fg = '#bb8844',
+          -- bg = '#000000',
         },
         buffer_selected = {
+          fg = '#ffcc88',
+          bg = '#1714af',
           bold = true,
           italic = false,
         },
+        modified_selected = {
+          fg = '#bb8844',
+	  bg = '#1714af',
+        },
+        numbers_selected = {
+          fg = '#bb8844',
+	  bg = '#1714af',
+          bold = true,
+          italic = false,
+        },
+        hint_selected = {
+          fg = '#bb8844',
+	  bg = '#1714af',
+          bold = true,
+          italic = false,
+        },
+        close_button_selected = {
+          fg = '#bbbbbb',
+	  bg = '#1714af',
+          bold = true,
+          italic = false,
+        },
+   --      separator_selected = {
+   --        fg = '#ffffff',
+	  -- bg = '#1714af',
+   --      },
         -- separator_selected = {},
         -- tab_selected = {},
         -- background = {},
@@ -56,5 +89,6 @@ return {
         -- fill = {},
       },
     }
+    vim.keymap.set('n', '<leader>pin', ':BufferLineTogglePin <CR>', { noremap = true, silent = false, desc = 'Pin current buffer in bufferline'})
   end,
 }

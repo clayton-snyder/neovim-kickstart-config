@@ -1,0 +1,6 @@
+You fixed the close buffer vs close window thing. It was a bad mapping.
+<leader>xb is close buffer.
+<leader>xs is close split/window.
+Get those down.
+
+<leader>lw for line wrap toggle
